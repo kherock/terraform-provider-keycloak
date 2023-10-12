@@ -197,6 +197,6 @@ func dataSourceKeycloakSamlClientRead(ctx context.Context, data *schema.Resource
 	if err != nil {
 		return diag.FromErr(err)
 	}
-
+	data.Set("extra_config", client.Attributes.ExtraConfig)
 	return nil
 }
