@@ -560,7 +560,10 @@ func dataSourceKeycloakRealmRead(ctx context.Context, data *schema.ResourceData,
 		return diag.FromErr(err)
 	}
 
-	setRealmData(data, realm, keycloakVersion)
+	diagErr := setRealmData(data, realm, keycloakVersion)
+	if err != nil {
+		return diagErr
+	}
 
 	return nil
 }
